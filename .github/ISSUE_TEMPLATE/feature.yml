@@ -1,0 +1,57 @@
+name: Feature (FR)
+description: Implement a Functional Requirement (FR-XXX)
+title: "feat: FR-XXX タイトルを記載"
+labels: [feature]
+body:
+  - type: input
+    id: fr_id
+    attributes:
+      label: FR ID
+      description: REQUIREMENTS.md のFR番号（例: FR-001）
+      placeholder: FR-001
+    validations:
+      required: true
+  - type: input
+    id: scope
+    attributes:
+      label: スコープ
+      description: このIssueの範囲（API/UI/DBなど）
+      placeholder: API + UI
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 要約（目的/背景）。REQUIREMENTS.md の該当箇所を引用可。
+      placeholder: この機能でユーザーは…
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受け入れ基準
+      description: Given/When/Then 形式で記載
+      placeholder: |
+        - Given … When … Then …
+        - Given … When … Then …
+  - type: checkboxes
+    id: tasks
+    attributes:
+      label: タスク（WBS）
+      options:
+        - label: 要件精査（受け入れ基準をテスト可能に）
+        - label: スキーマ設計/マイグレーション
+        - label: API契約（エンドポイント/DTO/エラー）
+        - label: アプリ層（ユースケース/バリデーション）
+        - label: UI（フォーム/状態/アクセシビリティ）
+        - label: 権限/セキュリティ（認可/監査）
+        - label: テスト（単体/結合/E2E、カバレッジ）
+        - label: 性能/監視（p95/メトリクス/ログ）
+        - label: ドキュメント更新（README/AGENTS/API）
+  - type: textarea
+    id: notes
+    attributes:
+      label: メモ/補足
+      description: リスク、代替案、関連ADR
+

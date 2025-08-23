@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Requirements (REQUIREMENTS.md)
+    url: ../docs/REQUIREMENTS.md
+    about: まず要件の該当FR/NFR/USを確認してください。
+
