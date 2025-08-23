@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getBrowserSupabase } from '@/lib/supabase-browser';
+import { getBrowserSupabase } from '../../lib/supabase-browser';
 
 type UserInfo = { email?: string | null } | null;
 
@@ -27,6 +27,7 @@ export default function AuthMenu() {
   if (!supa) return null;
 
   async function signOut() {
+    if (!supa) return;
     setLoading(true);
     await supa.auth.signOut();
     setLoading(false);

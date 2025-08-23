@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Modal } from '@/app/components/Modal';
+import { Modal } from '../../components/Modal';
 
 type Entry = { id: string; content: string; createdAt: string };
 type Comment = { characterId: string; commentText: string; generatedAt: string; model?: string };

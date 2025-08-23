@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { getBrowserSupabase } from '@/lib/supabase-browser';
+import { getBrowserSupabase } from '../../lib/supabase-browser';
 import { useRouter } from 'next/navigation';
 
 export default function AuthPage() {

@@ -1,10 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/api/entries/counts/route": "app/api/entries/counts/route.js",
+  "/api/profile/route": "app/api/profile/route.js",
+  "/auth/callback/page": "app/auth/callback/page.js",
+  "/auth/page": "app/auth/page.js",
   "/day/[date]/page": "app/day/[date]/page.js",
+  "/page": "app/page.js",
+  "/api/characters/route": "app/api/characters/route.js",
   "/api/summary/route": "app/api/summary/route.js",
-  "/api/comment/route": "app/api/comment/route.js",
+  "/api/entries/counts/route": "app/api/entries/counts/route.js",
   "/api/entries/route": "app/api/entries/route.js",
-  "/api/characters/route": "app/api/characters/route.js"
+  "/api/comment/route": "app/api/comment/route.js"
 }

@@ -6,16 +6,22 @@ import { useRouter } from 'next/navigation';
 
 type Counts = Record<string, number>;
 
-function fmtDate(d: Date) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
+function isValidDate(d: any): d is Date {
+  return d instanceof Date && !isNaN(d.getTime());
+}
+
+function fmtDate(d?: Date | null) {
+  const dd = isValidDate(d) ? d! : new Date();
+  const y = dd.getFullYear();
+  const m = String(dd.getMonth() + 1).padStart(2, '0');
+  const day = String(dd.getDate()).padStart(2, '0');
   return `${y}-${m}-${day}`;
 }
 
-function fmtMonth(d: Date) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
+function fmtMonth(d?: Date | null) {
+  const dd = isValidDate(d) ? d! : new Date();
+  const y = dd.getFullYear();
+  const m = String(dd.getMonth() + 1).padStart(2, '0');
   return `${y}-${m}`;
 }
 
@@ -35,7 +41,7 @@ export default function HomePage() {
   const todayStr = useMemo(() => fmtDate(new Date()), []);
 
   const DayContent = (props: any) => {
-    const d: Date = props.date;
+    const d: Date = isValidDate(props?.date) ? (props.date as Date) : new Date();
     const str = fmtDate(d);
     const n = counts[str] || 0;
     const isToday = str === todayStr;
@@ -62,8 +68,8 @@ export default function HomePage() {
         <DayPicker
           mode="single"
           month={month}
-          onMonthChange={setMonth}
-          components={{ DayContent }}
+          onMonthChange={(m:any) => setMonth(isValidDate(m) ? m : new Date())}
+          components={{ Day: DayContent as any }}
           numberOfMonths={1}
           pagedNavigation={false}
           locale={jaMonday as any}

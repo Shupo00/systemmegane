@@ -78,15 +78,15 @@ export function getDbRepoWithClient(supabase: SupabaseClient): Repo {
       const endStr = end.toISOString().slice(0, 10);
       const { data, error } = await supabase
         .from('diary_entries')
-        .select('date, count:id', { count: 'exact', head: false })
+        .select('date')
         .gte('date', startStr)
         .lt('date', endStr)
-        .eq('user_id', userId)
-        .group('date');
+        .eq('user_id', userId);
       if (error) throw error;
       const out: Record<string, number> = {};
       for (const r of (data as any[]) || []) {
-        out[r.date] = Number(r.count || 0);
+        const d = (r as any).date as string;
+        out[d] = (out[d] || 0) + 1;
       }
       return out;
     },

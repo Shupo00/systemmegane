@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRepoForRequest } from '@/lib/repo';
-import { getOrSetUserIdCookie } from '@/lib/user';
-import { getServerSupabase } from '@/lib/supabase-server';
-import { CHARACTERS, getCharacter, isPremiumCharacter } from '@/lib/characters';
-import { generateCharacterComment, isOpenAIConfigured, generateSummary as aiGenerateSummary } from '@/lib/openai';
+import { getRepoForRequest } from '../../../lib/repo';
+import { getOrSetUserIdCookie } from '../../../lib/user';
+import { getServerSupabase } from '../../../lib/supabase-server';
+import { CHARACTERS, getCharacter, isPremiumCharacter } from '../../../lib/characters';
+import { generateCharacterComment, isOpenAIConfigured, generateSummary as aiGenerateSummary } from '../../../lib/openai';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const FREE = CHARACTERS.filter((c) => !c.premium);
 

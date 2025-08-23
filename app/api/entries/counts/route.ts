@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSupabase } from '@/lib/supabase-server';
-import { getOrSetUserIdCookie } from '@/lib/user';
-import { getRepoForRequest } from '@/lib/repo';
+import { getServerSupabase } from '../../../../lib/supabase-server';
+import { getOrSetUserIdCookie } from '../../../../lib/user';
+import { getRepoForRequest } from '../../../../lib/repo';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -16,4 +17,3 @@ export async function GET(req: NextRequest) {
   const counts = await repo.listEntryCountsByMonth(userId, month);
   return NextResponse.json({ counts });
 }
-

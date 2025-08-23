@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRepoForRequest } from '@/lib/repo';
-import { getOrSetUserIdCookie } from '@/lib/user';
-import { getServerSupabase } from '@/lib/supabase-server';
-import { generateSummary as aiGenerateSummary, isOpenAIConfigured } from '@/lib/openai';
+import { getRepoForRequest } from '../../../lib/repo';
+import { getOrSetUserIdCookie } from '../../../lib/user';
+import { getServerSupabase } from '../../../lib/supabase-server';
+import { generateSummary as aiGenerateSummary, isOpenAIConfigured } from '../../../lib/openai';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 function simpleSummarize(text: string): string {
   // naive summary: first sentence up to ~120 chars
