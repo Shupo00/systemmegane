@@ -1,7 +1,7 @@
 // Repository abstraction: switches between FS (local) and Supabase (DB)
-import { addEntry as fsAdd, listEntries as fsList, getSummary as fsGetSum, upsertSummary as fsUpSum, listComments as fsListCom, upsertComment as fsUpCom } from '@/lib/fsdb';
-import { getDbRepoWithClient } from '@/lib/repo.supabase';
-import { CHARACTERS, type Character } from '@/lib/characters';
+import { addEntry as fsAdd, listEntries as fsList, getSummary as fsGetSum, upsertSummary as fsUpSum, listComments as fsListCom, upsertComment as fsUpCom } from './fsdb';
+import { getDbRepoWithClient } from './repo.supabase';
+import { CHARACTERS, type Character } from './characters';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 export type Entry = { id: string; date: string; content: string; createdAt: string };
@@ -33,7 +33,7 @@ export function getRepo(): Repo {
     upsertSummary: async (_u, d, s) => fsUpSum(d, s),
     listComments: async (_u, d) => fsListCom(d),
     upsertComment: async (_u, d, ch, txt, m) => fsUpCom(d, ch, txt, m),
-    listEntryCountsByMonth: async (_u, month) => (await import('@/lib/fsdb')).listEntryCountsByMonth(month),
+    listEntryCountsByMonth: async (_u, month) => (await import('./fsdb')).listEntryCountsByMonth(month),
     listCharacters: async () => CHARACTERS.map((c) => ({
       ...c,
       // Prefer name-based PNG (for Japanese filenames), else id-based PNG fallback
@@ -51,7 +51,7 @@ export function getRepoForRequest(client: SupabaseClient | null): Repo {
     upsertSummary: async (_u, d, s) => fsUpSum(d, s),
     listComments: async (_u, d) => fsListCom(d),
     upsertComment: async (_u, d, ch, txt, m) => fsUpCom(d, ch, txt, m),
-    listEntryCountsByMonth: async (_u, month) => (await import('@/lib/fsdb')).listEntryCountsByMonth(month),
+    listEntryCountsByMonth: async (_u, month) => (await import('./fsdb')).listEntryCountsByMonth(month),
     listCharacters: async () => CHARACTERS.map((c) => ({
       ...c,
       icon: `/characters/${encodeURIComponent(c.name)}.png`,

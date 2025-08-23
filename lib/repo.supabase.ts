@@ -1,5 +1,5 @@
-import type { Repo, Entry, Summary, Comment } from '@/lib/repo';
-import { CHARACTERS } from '@/lib/characters';
+import type { Repo, Entry, Summary, Comment } from './repo';
+import { CHARACTERS } from './characters';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 export function getDbRepoWithClient(supabase: SupabaseClient): Repo {

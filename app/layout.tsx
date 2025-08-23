@@ -5,7 +5,7 @@ import { Noto_Serif_JP } from 'next/font/google';
 import dynamic from 'next/dynamic';
 
 const serif = Noto_Serif_JP({ subsets: ['latin'], weight: ['400','700'], variable: '--font-serif' });
-const AuthMenu = dynamic(() => import('@/app/components/AuthMenu'), { ssr: false });
+const AuthMenu = dynamic(() => import('./components/AuthMenu'), { ssr: false });
 import 'react-day-picker/dist/style.css';
 
 export const metadata: Metadata = {
