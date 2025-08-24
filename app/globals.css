@@ -129,15 +129,7 @@ input, textarea, button, select { font: inherit; }
 .rdp-nav_button:hover { background: #fff3cd; color: #2d2305; }
 .rdp-hascount { background: #fff8e6 !important; }
 :root { color-scheme: light dark; }
-/* Tighten calendar card spacing and center content */
-.card.calendar-full { padding: 1rem 0 1rem; border-radius: .9rem; }
-.stack-tight { display: grid; gap: .35rem; }
-.calendar-full { min-height: auto; display: grid; place-items: center; width: 100%; padding: 0; }
-.calendar-full .rdp-months { padding: .8rem 1rem; margin: 0 auto; }
-/* Hide calendar title on home, keep a clean hero look */
-.calendar-full h2 { display: none; }
-/* Add a little space under the Today button */
-.calendar-full .btn.primary { margin-bottom: .6rem; }
+
 /* Two-column layout for composer + entries */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
 @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
@@ -174,3 +166,12 @@ input, textarea, button, select { font: inherit; }
   .day-layout { flex-direction: column; }
   .composer-card { width: 100%; }
 }
+/* Tighten calendar card spacing and center content */
+.card.calendar-full { padding: 1rem 0 1rem; border-radius: .9rem; }
+.stack-tight { display: grid; gap: .35rem; }
+.calendar-full { min-height: auto; display: grid; place-items: center; width: 100%; padding: 0; }
+.calendar-full .rdp-months { padding: .8rem 1rem; margin: 0 auto; }
+/* Hide calendar title on home, keep a clean hero look */
+.calendar-full h2 { display: none; }
+/* Add a little space under the Today button */
+.calendar-full .btn.primary { margin-bottom: .6rem; }

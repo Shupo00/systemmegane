@@ -69,7 +69,7 @@ export default function HomePage() {
           mode="single"
           month={month}
           onMonthChange={(m:any) => setMonth(isValidDate(m) ? m : new Date())}
-          components={{ Day: DayContent as any }}
+          components={{ DayContent: DayContent as any }}
           numberOfMonths={1}
           pagedNavigation={false}
           locale={jaMonday as any}
