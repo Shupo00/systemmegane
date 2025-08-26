@@ -41,7 +41,10 @@ export default function HomePage() {
   const todayStr = useMemo(() => fmtDate(new Date()), []);
 
     const CustomDayButton = (props: any) => {
-    const d: Date = isValidDate(props?.date) ? (props.date as Date) : new Date();
+    if (!props.date || !isValidDate(props.date)) {
+      return <DayButton {...props} />;
+    }
+    const d: Date = props.date as Date;
     const str = fmtDate(d);
     const n = counts[str] || 0;
     const isToday = str === todayStr;
