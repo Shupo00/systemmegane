@@ -1,5 +1,5 @@
 'use client';
-import { DayPicker } from 'react-day-picker';
+import { DayPicker, DayButton } from 'react-day-picker';
 import { ja } from 'date-fns/locale';
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -40,18 +40,20 @@ export default function HomePage() {
 
   const todayStr = useMemo(() => fmtDate(new Date()), []);
 
-  const DayContent = (props: any) => {
+    const CustomDayButton = (props: any) => {
     const d: Date = isValidDate(props?.date) ? (props.date as Date) : new Date();
     const str = fmtDate(d);
     const n = counts[str] || 0;
     const isToday = str === todayStr;
     return (
-      <div style={{ position: 'relative' }} title={n ? `${n}件のエントリ` : ''}>
-        <div style={{ fontWeight: isToday ? 700 : 500 }}>{d.getDate()}</div>
-        {n > 0 && (
-          <span className="badge" style={{ position: 'absolute', top: 0, right: 0 }}>{n}</span>
-        )}
-      </div>
+      <DayButton {...props}>
+        <div style={{ position: 'relative' }} title={n ? `${n}件のエントリ` : ''}>
+          <div style={{ fontWeight: isToday ? 700 : 500 }}>{d.getDate()}</div>
+          {n > 0 && (
+            <span className="badge" style={{ position: 'absolute', top: 0, right: 0 }}>{n}</span>
+          )}
+        </div>
+      </DayButton>
     );
   };
 
@@ -69,7 +71,7 @@ export default function HomePage() {
           mode="single"
           month={month}
           onMonthChange={(m:any) => setMonth(isValidDate(m) ? m : new Date())}
-          components={{ DayContent: DayContent as any }}
+          components={{ DayButton: CustomDayButton as any }}
           numberOfMonths={1}
           pagedNavigation={false}
           locale={jaMonday as any}

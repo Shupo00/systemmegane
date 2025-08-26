@@ -2,9 +2,7 @@ import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  experimental: {},
   webpack: (config) => {
     // Support @ alias (root) for both TS and JS runtime in Vercel
     config.resolve.alias = {
